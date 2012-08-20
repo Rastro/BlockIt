@@ -36,10 +36,6 @@ public class BlockIt extends JavaPlugin {
 		
 		//String[] listOne = { "one", "two", "four", "three" };
 		List<String> listTwo = new ArrayList<String>();
-		
-		listTwo.add("Test Line");
-		listTwo.add("Test Line 2");
-		
 		FileConfiguration config = getConfig();
 		
 		config.addDefault("Blocks.STONE", false);
