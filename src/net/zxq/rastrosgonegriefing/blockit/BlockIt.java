@@ -1,15 +1,11 @@
 package net.zxq.rastrosgonegriefing.blockit;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Logger;
 
-import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
+import net.zxq.rastrosgonegriefing.commands.CheckExecutor;
+
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class BlockIt extends JavaPlugin {
@@ -19,25 +15,20 @@ public class BlockIt extends JavaPlugin {
 	public void onEnable() {
 		log("Enabled");
 
-		/*
-		getConfig()
-				.options()
-				.header("Write true to make the block un-useable. Write false to make the block use-able.");
-		getConfig().options().copyHeader();
-		getConfig().options().copyDefaults(true);
-		saveConfig();
-		*/
-
 		String pluginFolder = this.getDataFolder().getAbsolutePath();
 		(new File(pluginFolder)).mkdirs();
 
 		getServer().getPluginManager().registerEvents(new BlockListener(this),
 				this);
-		
-		//String[] listOne = { "one", "two", "four", "three" };
-		List<String> listTwo = new ArrayList<String>();
+
 		FileConfiguration config = getConfig();
-		
+
+		config.options()
+				.header("Set a block to 'true' to disable it. "
+						+ "Set a block to 'false' to enable it. "
+						+ "If a block is disabled, only players with the permission node/is an op can use it.");
+		config.options().copyHeader();
+
 		config.addDefault("Blocks.STONE", false);
 		config.addDefault("Blocks.GRASS", false);
 		config.addDefault("Blocks.DIRT", false);
@@ -80,11 +71,28 @@ public class BlockIt extends JavaPlugin {
 		config.addDefault("Blocks.DOUBLESANDSTONESLAB", false);
 		config.addDefault("Blocks.DOUBLEWOODENSLAB", false);
 		config.addDefault("Blocks.DOUBLECOBBLESLAB", false);
-		config.addDefault("Blocks.BRICKSLAB", false);
+		config.addDefault("Blocks.DOUBLEBRICKSLAB", false);
+		config.addDefault("Blocks.DOUBLESTONEBRICKSLAB", false);
+		config.addDefault("Blocks.BRICK", false);
 		config.addDefault("Blocks.TNT", false);
-		
+		config.addDefault("Blocks.BOOKSHELF", false);
+		config.addDefault("Blocks.MOSSYCOBBLESTONE", false);
+		config.addDefault("Blocks.OBSIDIAN", false);
+		config.addDefault("Blocks.TORCH", false);
+		config.addDefault("Blocks.FIRE", false);
+		config.addDefault("Blocks.MONSTER SPAWNER", false);
+		config.addDefault("Blocks.WOODEN STAIRS", false);
+		config.addDefault("Blocks.CHEST", false);
+		config.addDefault("Blocks.REDSTONEWIRE", false);
+		config.addDefault("Blocks.DIAMONDORE", false);
+		config.addDefault("Blocks.DIAMONDBLOCK", false);
+		config.addDefault("Blocks.WHEAT", false);
+		config.addDefault("Blocks.WORKBENCH", false);
+
 		config.options().copyDefaults(true);
 		saveConfig();
+
+		this.getCommand("bcheck").setExecutor(new CheckExecutor(this));
 	}
 
 	@Override

@@ -3,6 +3,8 @@ package net.zxq.rastrosgonegriefing.blockit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -50,13 +52,27 @@ public class BlockListener implements Listener {
 	public static Material[] redMushroom = { Material.RED_MUSHROOM };
 	public static Material[] goldBlock = { Material.GOLD_BLOCK };
 	public static Material[] ironBlock = { Material.IRON_BLOCK };
-	public static Material[] doubleStoneSlab = { Material.DOUBLE_STEP };
-	public static Material[] doubleSandStoneSlab = { Material.DOUBLE_STEP };
-	public static Material[] doubleWoodenSlab = { Material.WOOD_DOUBLE_STEP };
+	public static Material[] doubleStoneSlab = { Material.STONE };
+	public static Material[] doubleSandStoneSlab = { Material.SANDSTONE };
+	public static Material[] doubleWoodenSlab = { Material.WOOD };
 	public static Material[] doubleCobbleSlab = { Material.COBBLESTONE };
 	public static Material[] doubleBrickSlab = { Material.BRICK };
-	
+	public static Material[] doubleStoneBrickSlab = { Material.SMOOTH_BRICK };
+	public static Material[] brick = { Material.BRICK };
 	public static Material[] tnt = { Material.TNT };
+	public static Material[] bookShelf = { Material.BOOKSHELF };
+	public static Material[] mossyCobblestone = { Material.MOSSY_COBBLESTONE };
+	public static Material[] obsidian = { Material.OBSIDIAN };
+	public static Material[] torch = { Material.TORCH };
+	public static Material[] fire = { Material.FIRE };
+	public static Material[] monsterSpawner = { Material.MOB_SPAWNER };
+	public static Material[] woodenStairs = { Material.WOOD_STAIRS };
+	public static Material[] chest = { Material.CHEST };
+	public static Material[] redstoneWire = { Material.REDSTONE_WIRE };
+	public static Material[] diamondBlock = { Material.DIAMOND_BLOCK };
+	public static Material[] diamondOre = { Material.REDSTONE_ORE };
+	public static Material[] workbench = { Material.WORKBENCH };
+	public static Material[] wheatCrops = { Material.WHEAT };
 
 	public BlockListener(BlockIt plugin) {
 		this.plugin = plugin;
@@ -699,7 +715,7 @@ public class BlockListener implements Listener {
 		}
 		
 		if (plugin.getConfig().getString("Blocks.REDMUSHROOM") == "true") {
-			for (Material blocked : tnt) {
+			for (Material blocked : redMushroom) {
 				if (blocked == block1) {
 					if (player.hasPermission("blockit.use.redmushroom")) {
 
@@ -717,7 +733,7 @@ public class BlockListener implements Listener {
 		}
 		
 		if (plugin.getConfig().getString("Blocks.GOLDBLOCK") == "true") {
-			for (Material blocked : tnt) {
+			for (Material blocked : goldBlock) {
 				if (blocked == block1) {
 					if (player.hasPermission("blockit.use.goldblock")) {
 
@@ -735,7 +751,7 @@ public class BlockListener implements Listener {
 		}
 		
 		if (plugin.getConfig().getString("Blocks.IRONBLOCK") == "true") {
-			for (Material blocked : tnt) {
+			for (Material blocked : ironBlock) {
 				if (blocked == block1) {
 					if (player.hasPermission("blockit.use.ironblock")) {
 
@@ -753,7 +769,7 @@ public class BlockListener implements Listener {
 		}
 		
 		if (plugin.getConfig().getString("Blocks.DOUBLESTONESLAB") == "true") {
-			for (Material blocked : tnt) {
+			for (Material blocked : doubleStoneSlab) {
 				if (blocked == block1) {
 					if (player.hasPermission("blockit.use.doublestoneslab")) {
 
@@ -771,9 +787,9 @@ public class BlockListener implements Listener {
 		}
 		
 		if (plugin.getConfig().getString("Blocks.DOUBLESANDSTONESLAB") == "true") {
-			for (Material blocked : tnt) {
+			for (Material blocked : doubleSandStoneSlab) {
 				if (blocked == block1) {
-					if (player.hasPermission("blockit.use.redmushroom")) {
+					if (player.hasPermission("blockit.use.doublesandstoneslab")) {
 
 					} else {
 						event.getBlock().setType(Material.AIR);
@@ -781,6 +797,96 @@ public class BlockListener implements Listener {
 								event.getPlayer().getDisplayName()
 										+ " tried placing a" + ChatColor.RED
 										+ " DOUBLE SANDSTONE SLAB " + ChatColor.WHITE + "at "
+										+ "X:" + block.getX() + " Y:"
+										+ block.getY() + " Z:" + block.getZ());
+					}
+				}
+			}
+		}
+		
+		if (plugin.getConfig().getString("Blocks.DOUBLEWOODENSLAB") == "true") {
+			for (Material blocked : doubleWoodenSlab) {
+				if (blocked == block1) {
+					if (player.hasPermission("blockit.use.doublewoodenslab")) {
+
+					} else {
+						event.getBlock().setType(Material.AIR);
+						plugin.getServer().broadcastMessage(
+								event.getPlayer().getDisplayName()
+										+ " tried placing a" + ChatColor.RED
+										+ " DOUBLE WOODEN SLAB " + ChatColor.WHITE + "at "
+										+ "X:" + block.getX() + " Y:"
+										+ block.getY() + " Z:" + block.getZ());
+					}
+				}
+			}
+		}
+		
+		if (plugin.getConfig().getString("Blocks.DOUBLECOBBLESLAB") == "true") {
+			for (Material blocked : doubleCobbleSlab) {
+				if (blocked == block1) {
+					if (player.hasPermission("blockit.use.doublecobbleslab")) {
+
+					} else {
+						event.getBlock().setType(Material.AIR);
+						plugin.getServer().broadcastMessage(
+								event.getPlayer().getDisplayName()
+										+ " tried placing a" + ChatColor.RED
+										+ " DOUBLE COBBLESTONE SLAB " + ChatColor.WHITE + "at "
+										+ "X:" + block.getX() + " Y:"
+										+ block.getY() + " Z:" + block.getZ());
+					}
+				}
+			}
+		}
+		
+		if (plugin.getConfig().getString("Blocks.DOUBLEBRICKSLAB") == "true") {
+			for (Material blocked : doubleBrickSlab) {
+				if (blocked == block1) {
+					if (player.hasPermission("blockit.use.doublebrickslab")) {
+
+					} else {
+						event.getBlock().setType(Material.AIR);
+						plugin.getServer().broadcastMessage(
+								event.getPlayer().getDisplayName()
+										+ " tried placing a" + ChatColor.RED
+										+ " DOUBLE BRICK SLAB " + ChatColor.WHITE + "at "
+										+ "X:" + block.getX() + " Y:"
+										+ block.getY() + " Z:" + block.getZ());
+					}
+				}
+			}
+		}
+		
+		if (plugin.getConfig().getString("Blocks.DOUBLESTONEBRICKSLAB") == "true") {
+			for (Material blocked : doubleStoneBrickSlab) {
+				if (blocked == block1) {
+					if (player.hasPermission("blockit.use.doublestonebrickslab")) {
+
+					} else {
+						event.getBlock().setType(Material.AIR);
+						plugin.getServer().broadcastMessage(
+								event.getPlayer().getDisplayName()
+										+ " tried placing a" + ChatColor.RED
+										+ " DOUBLE STONE BRICK SLAB " + ChatColor.WHITE + "at "
+										+ "X:" + block.getX() + " Y:"
+										+ block.getY() + " Z:" + block.getZ());
+					}
+				}
+			}
+		}
+		
+		if (plugin.getConfig().getString("Blocks.BRICK") == "true") {
+			for (Material blocked : brick) {
+				if (blocked == block1) {
+					if (player.hasPermission("blockit.use.brick")) {
+
+					} else {
+						event.getBlock().setType(Material.AIR);
+						plugin.getServer().broadcastMessage(
+								event.getPlayer().getDisplayName()
+										+ " tried placing a" + ChatColor.RED
+										+ " BRICK " + ChatColor.WHITE + "at "
 										+ "X:" + block.getX() + " Y:"
 										+ block.getY() + " Z:" + block.getZ());
 					}
@@ -799,6 +905,240 @@ public class BlockListener implements Listener {
 								event.getPlayer().getDisplayName()
 										+ " tried placing" + ChatColor.RED
 										+ " TNT " + ChatColor.WHITE + "at "
+										+ "X:" + block.getX() + " Y:"
+										+ block.getY() + " Z:" + block.getZ());
+					}
+				}
+			}
+		}
+		
+		if (plugin.getConfig().getString("Blocks.BOOKSHELF") == "true") {
+			for (Material blocked : bookShelf) {
+				if (blocked == block1) {
+					if (player.hasPermission("blockit.use.bookshelf")) {
+
+					} else {
+						event.getBlock().setType(Material.AIR);
+						plugin.getServer().broadcastMessage(
+								event.getPlayer().getDisplayName()
+										+ " tried placing a" + ChatColor.RED
+										+ " BOOKSHELF " + ChatColor.WHITE + "at "
+										+ "X:" + block.getX() + " Y:"
+										+ block.getY() + " Z:" + block.getZ());
+					}
+				}
+			}
+		}
+		
+		if (plugin.getConfig().getString("Blocks.MOSSYCOBBLESTONE") == "true") {
+			for (Material blocked : mossyCobblestone) {
+				if (blocked == block1) {
+					if (player.hasPermission("blockit.use.mossycobblestone")) {
+
+					} else {
+						event.getBlock().setType(Material.AIR);
+						plugin.getServer().broadcastMessage(
+								event.getPlayer().getDisplayName()
+										+ " tried placing a" + ChatColor.RED
+										+ " MOSSY COBBLESTONE BLOCK " + ChatColor.WHITE + "at "
+										+ "X:" + block.getX() + " Y:"
+										+ block.getY() + " Z:" + block.getZ());
+					}
+				}
+			}
+		}
+		
+		if (plugin.getConfig().getString("Blocks.OBSIDIAN") == "true") {
+			for (Material blocked : obsidian) {
+				if (blocked == block1) {
+					if (player.hasPermission("blockit.use.obsidian")) {
+
+					} else {
+						event.getBlock().setType(Material.AIR);
+						plugin.getServer().broadcastMessage(
+								event.getPlayer().getDisplayName()
+										+ " tried placing an" + ChatColor.RED
+										+ " OBSIDIAN BLOCK " + ChatColor.WHITE + "at "
+										+ "X:" + block.getX() + " Y:"
+										+ block.getY() + " Z:" + block.getZ());
+					}
+				}
+			}
+		}
+		
+		if (plugin.getConfig().getString("Blocks.TORCH") == "true") {
+			for (Material blocked : torch) {
+				if (blocked == block1) {
+					if (player.hasPermission("blockit.use.torch")) {
+
+					} else {
+						event.getBlock().setType(Material.AIR);
+						plugin.getServer().broadcastMessage(
+								event.getPlayer().getDisplayName()
+										+ " tried placing a" + ChatColor.RED
+										+ " TORCH " + ChatColor.WHITE + "at "
+										+ "X:" + block.getX() + " Y:"
+										+ block.getY() + " Z:" + block.getZ());
+					}
+				}
+			}
+		}
+		
+		if (plugin.getConfig().getString("Blocks.FIRE") == "true") {
+			for (Material blocked : fire) {
+				if (blocked == block1) {
+					if (player.hasPermission("blockit.use.fire")) {
+
+					} else {
+						event.getBlock().setType(Material.AIR);
+						plugin.getServer().broadcastMessage(
+								event.getPlayer().getDisplayName()
+										+ " tried placing a" + ChatColor.RED
+										+ " FIRE BLOCK " + ChatColor.WHITE + "at "
+										+ "X:" + block.getX() + " Y:"
+										+ block.getY() + " Z:" + block.getZ());
+					}
+				}
+			}
+		}
+		
+		if (plugin.getConfig().getString("Blocks.MONSTER SPAWNER") == "true") {
+			for (Material blocked : monsterSpawner) {
+				if (blocked == block1) {
+					if (player.hasPermission("blockit.use.monsterspawner")) {
+
+					} else {
+						event.getBlock().setType(Material.AIR);
+						plugin.getServer().broadcastMessage(
+								event.getPlayer().getDisplayName()
+										+ " tried placing a" + ChatColor.RED
+										+ " MONSTER SPAWNER " + ChatColor.WHITE + "at "
+										+ "X:" + block.getX() + " Y:"
+										+ block.getY() + " Z:" + block.getZ());
+					}
+				}
+			}
+		}
+		
+		if (plugin.getConfig().getString("Blocks.WOODEN STAIRS") == "true") {
+			for (Material blocked : woodenStairs) {
+				if (blocked == block1) {
+					if (player.hasPermission("blockit.use.woodenstairs")) {
+
+					} else {
+						event.getBlock().setType(Material.AIR);
+						plugin.getServer().broadcastMessage(
+								event.getPlayer().getDisplayName()
+										+ " tried placing" + ChatColor.RED
+										+ " WOODEN STAIRS " + ChatColor.WHITE + "at "
+										+ "X:" + block.getX() + " Y:"
+										+ block.getY() + " Z:" + block.getZ());
+					}
+				}
+			}
+		}
+		
+		if (plugin.getConfig().getString("Blocks.CHEST") == "true") {
+			for (Material blocked : chest) {
+				if (blocked == block1) {
+					if (player.hasPermission("blockit.use.chest")) {
+
+					} else {
+						event.getBlock().setType(Material.AIR);
+						plugin.getServer().broadcastMessage(
+								event.getPlayer().getDisplayName()
+										+ " tried placing a" + ChatColor.RED
+										+ " CHEST " + ChatColor.WHITE + "at "
+										+ "X:" + block.getX() + " Y:"
+										+ block.getY() + " Z:" + block.getZ());
+					}
+				}
+			}
+		}
+		
+		if (plugin.getConfig().getString("Blocks.REDSTONEWIRE") == "true") {
+			for (Material blocked : redstoneWire) {
+				if (blocked == block1) {
+					if (player.hasPermission("blockit.use.redstonewire")) {
+
+					} else {
+						event.getBlock().setType(Material.AIR);
+						plugin.getServer().broadcastMessage(
+								event.getPlayer().getDisplayName()
+										+ " tried placing" + ChatColor.RED
+										+ " REDSTONE WIRE " + ChatColor.WHITE + "at "
+										+ "X:" + block.getX() + " Y:"
+										+ block.getY() + " Z:" + block.getZ());
+					}
+				}
+			}
+		}
+		
+		if (plugin.getConfig().getString("Blocks.DIAMONDORE") == "true") {
+			for (Material blocked : diamondOre) {
+				if (blocked == block1) {
+					if (player.hasPermission("blockit.use.diamondore")) {
+
+					} else {
+						event.getBlock().setType(Material.AIR);
+						plugin.getServer().broadcastMessage(
+								event.getPlayer().getDisplayName()
+										+ " tried placing a" + ChatColor.RED
+										+ " DIAMONDORE " + ChatColor.WHITE + "at "
+										+ "X:" + block.getX() + " Y:"
+										+ block.getY() + " Z:" + block.getZ());
+					}
+				}
+			}
+		}
+		
+		if (plugin.getConfig().getString("Blocks.DIAMONDBLOCK") == "true") {
+			for (Material blocked : diamondBlock) {
+				if (blocked == block1) {
+					if (player.hasPermission("blockit.use.diamondblock")) {
+
+					} else {
+						event.getBlock().setType(Material.AIR);
+						plugin.getServer().broadcastMessage(
+								event.getPlayer().getDisplayName()
+										+ " tried placing a" + ChatColor.RED
+										+ " DIAMONDBLOCK " + ChatColor.WHITE + "at "
+										+ "X:" + block.getX() + " Y:"
+										+ block.getY() + " Z:" + block.getZ());
+					}
+				}
+			}
+		}
+		
+		if (plugin.getConfig().getString("Blocks.WORKBENCH") == "true") {
+			for (Material blocked : diamondBlock) {
+				if (blocked == block1) {
+					if (player.hasPermission("blockit.use.workbench")) {
+
+					} else {
+						event.getBlock().setType(Material.AIR);
+						plugin.getServer().broadcastMessage(
+								event.getPlayer().getDisplayName()
+										+ " tried placing a" + ChatColor.RED
+										+ " WORKBENCH " + ChatColor.WHITE + "at "
+										+ "X:" + block.getX() + " Y:"
+										+ block.getY() + " Z:" + block.getZ());
+					}
+				}
+			}
+		}
+		
+		if (plugin.getConfig().getString("Blocks.WHEAT") == "true") {
+			for (Material blocked : diamondBlock) {
+				if (blocked == block1) {
+					if (player.hasPermission("blockit.use.wheat")) {
+
+					} else {
+						event.getBlock().setType(Material.AIR);
+						plugin.getServer().broadcastMessage(
+								event.getPlayer().getDisplayName()
+										+ " tried placing a" + ChatColor.RED
+										+ " WHEAT(CROP) " + ChatColor.WHITE + "at "
 										+ "X:" + block.getX() + " Y:"
 										+ block.getY() + " Z:" + block.getZ());
 					}

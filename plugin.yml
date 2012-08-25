@@ -1,7 +1,7 @@
 name: BlockIt
-version: 0.1
+version: 0.2
 main: net.zxq.rastrosgonegriefing.blockit.BlockIt
 commands:
-    bi check:
+    bcheck:
        description: Checks a block if it is useable.
-       usage: /bi check <block>
+       usage: /bcheck <block>
